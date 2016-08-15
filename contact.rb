@@ -1,4 +1,4 @@
-require_relative 'crm'
+#require_relative 'crm'
 
 class Contact
 
@@ -8,12 +8,12 @@ class Contact
 
 @@contacts = []#will store all contact instances is a class variable
 @@id = 1# set default value for counter
-    def initialize(first_name, last_name, email, note = "N/A")
+    def initialize(first_name, last_name, email, note)
        @first_name = first_name
        @last_name = last_name
        @email = email
        @note = note
-      self.create #to add new instance to @@contacts array
+      #self.create #to add new instance to @@contacts array
       # @@contacts  << self #this will put whatever contact I make into @@contacts
             # simple way to see list
        @id = @@id# check this
@@ -64,7 +64,7 @@ end
 
   # This method should delete all of the contacts
   def self.delete_all
-
+@@contacts.clear #empties @@contacts array "the rolodex"
   end
 
   def full_name

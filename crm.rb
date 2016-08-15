@@ -1,6 +1,6 @@
 require_relative 'contact'
 
-class CRM
+class Crm
 
   def initialize
 
@@ -53,16 +53,18 @@ class CRM
   Contact.create(first_name, last_name, email, note)
 end
 
-  end
+#  end
 
   def modify_existing_contact
-    display_contacts
+    display_all_contacts #do we want display_all_contacts INSTEAD??
     puts "Please enter the id of the contact you wish to modify"
-    user_input = gets.chomp
-    if user_input == @id
-      #then ######
-    else "please re-enter ID"
-    end
+    id_to_modify = gets.chomp
+    item_to_modify = Contact.find(id_to_modify)
+    #get the instance
+    item_to_modify.update#we have to pass some variables?)
+      #then ###### go to update method in contacts Contact.find
+    #else "please re-enter ID"
+    #end
   end
 
   def delete_contact
@@ -84,8 +86,8 @@ end
   end
 
   def display_all_contacts
-    @@contacts.each do|x|
-      puts "#{@id} #{full_name} #{@email} #{@note}"
+    Contact.all.each do|x|
+      puts "#{@id} #{@first_name} #{@last_name} #{@email} #{@note}" # do we need x.@id
       puts "-" * 20
     end    # HINT: Make use of the display_contacts method to keep your code DRY
   end
@@ -98,3 +100,5 @@ end
   # Add other methods here, if you need them.
 
 end
+crm = Crm.new
+crm.main_menu
