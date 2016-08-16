@@ -1,4 +1,4 @@
-require_relative 'contact'
+require_relative 'contact.rb'
 
 class Crm
 
@@ -67,16 +67,12 @@ end
     #end
   end
 
-  def delete_contact
+  def delete_contact()
     display_all_contacts
     puts "Please enter the id of the contact you wish to modify"
-    user_input = gets.chomp
-    if user_input == @id
-      delete
-      puts "Deleted"#goes to delete method
-    else "please re-enter ID"
-    end
-    #calls delete method in contact.rb and updates @@contacts
+    id = gets.chomp.to_i
+    contact_info = Contact.find(id)
+    contact_info.delete()
   end
 
   # This method should accept as an argument an array of contacts

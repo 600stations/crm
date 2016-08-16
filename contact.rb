@@ -39,8 +39,12 @@ end
 
   # This method should accept an id as an argument
   # and return the contact who has that id
-  def self.find
-
+  def self.find(id)
+    @@contacts.each do|contact|
+      if contact.id == id
+        return contact
+      end
+    end
   end
 
   # This method should allow you to specify
@@ -70,8 +74,8 @@ end
 
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
-  def delete
-    @@contacts.delete(id)#this deletes contact from rolodex
+  def delete()
+    return @@contacts.delete(self)#this deletes contact from rolodex
   end
 
   # Feel free to add other methods here, if you need them.
