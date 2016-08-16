@@ -42,7 +42,7 @@ end
   def self.find(id)
     @@contacts.each do|x|
       if x.id == id
-        return x 
+        return x
       end
     end
   end
@@ -59,7 +59,29 @@ end
   # but it should allow you to search for a contact using attributes other than id
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
-  def self.find_by
+  def self.find_by(attribute, value)
+    if attribute == "first name"
+      @@contacts.each do |x|
+          if value == x.first_name
+          return x #this is the contact
+          end
+        end
+    elsif attribute == "last name"
+      @@contacts.each do |x|
+          if value == x.last_name
+          return x
+          end
+        end
+    elsif attribute == "email"
+      @@contacts.each do |x|
+          if value == x.last_name
+          return x
+          end
+        end
+    else
+      "No match was found. Please try again"
+      self.find_by()
+    end
 
   end
 

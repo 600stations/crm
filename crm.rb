@@ -75,11 +75,14 @@ end
     contact_detail.delete()
   end
 
-  # This method should accept as an argument an array of contacts
-  # and display each contact in that array
-  def display_contacts
 
+  def display_contacts(array_of_contacts)
+    # This method should accept as an argument an array of contacts
+    # and display each contact in that array
     # HINT: Make use of this method in the display_all_contacts and search_by_attribute methods to keep your code DRY
+    array_of_contacts.each do |x|
+    puts x # This displays the selected contact
+    end
   end
 
   def display_all_contacts
@@ -89,8 +92,13 @@ end
     end    # HINT: Make use of the display_contacts method to keep your code DRY
   end
 
-  def search_by_attribute
-
+  def search_by_attribute()
+    puts "Please enter a single attribute: first name, last name, or email"
+    attribute = gets.chomp
+    puts "Pleae enter the contact's first name, last name or email"
+    value = gets.chomp
+    contact_detail = Contact.find_by(attribute, value)
+    return display_contacts([contact_detail.first_name, contact_detail.last_name, contact_detail.email, contact_detail.note])
     # HINT: Make use of the display_contacts method to keep your code DRY
   end
 
