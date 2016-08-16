@@ -1,12 +1,12 @@
 
 class Contact
 
-  attr_accessor :first_name, :last_name, :email, :note#attr_accessor is a class method
+  attr_accessor :first_name, :last_name, :email, :note #attr_accessor is a class method
   attr_reader :id
 
 
 @@contacts = []  # stores all contact instances is a class variable - effectively my rolodex
-@@id = 1# set default value for counter
+@@id = 300# set default value for counter
     def initialize(first_name, last_name, email, note)
        @first_name = first_name
        @last_name = last_name
@@ -36,9 +36,9 @@ end
 
   # class method accepts an id as an argument returns the contact w match id
   def self.find(id)
-    @@contacts.each do|x|
-      if x.id == id
-        return x
+    @@contacts.each do|person|
+      if person.id == id
+        return person
       end
     end
   end
@@ -47,8 +47,21 @@ end
   # 1. which of the contact's attributes you want to update
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
-  def update
-
+  def update(attribute, modify)
+        if attribute == "first name"
+        @first_name = modify
+        puts "The first name was changed to: #{@first_name}"
+        elsif attribute == "last name"
+        @last_name == modify
+        puts "The last name was changed to: #{@last_name}"
+        elsif attribute == "email"
+        @email = modify
+        puts "The new email is: #{@email}"
+        elsif attribute == "note"
+        @note = modify
+        else
+        "No match was found. Please try again"
+        end
   end
 
   # This method should work similarly to the find method above
@@ -70,7 +83,7 @@ end
         end
     elsif attribute == "email"
       @@contacts.each do |x|
-          if value == x.last_name
+          if value == x.email
           return x
           end
         end

@@ -53,13 +53,31 @@ end
 
 #  end
 
-  def modify_existing_contact
-    display_all_contacts
-    puts "Please enter the id of the contact you wish to modify"
-    id_to_modify = gets.chomp
-    item_to_modify = Contact.find(id_to_modify)
-    item_to_modify.update
-  end
+  def modify_existing_contact()
+    #display_all_contacts
+    puts "Please enter the a single attribute: first name, last name or email"
+    attribute = gets.chomp
+    puts "Please enter the contact's: first name or last name or email"
+    value = gets.chomp
+    contact_detail = Contact.find_by(attribute, value)
+
+    if attribute == "first name"
+        puts "What is the new first name?"
+        new_first_name = gets.chomp
+        return contact_detail.update("first name", new_first_name)
+
+        elsif attribute == "last name"
+        puts "what is new last name?"
+        new_last_name = gets.chomp
+        return contact_detail.update("last name", new_last_name)
+
+        elsif attribute == "email"
+        puts "what is the new email?"
+        new_email = gets.chomp
+        return contact_detail.update("email", new_email)
+
+      end
+    end
 
   def delete_contact()
     display_all_contacts
@@ -73,13 +91,13 @@ end
   def display_contacts(array_of_contacts)
     # method accepts an array of contacts as an argument then displays each contact
     array_of_contacts.each do |x| # rename
-    puts x # This displays the selected contact
+    print x # This displays the selected contact
     end
   end
 
   def display_all_contacts
     Contact.all.each do|x|
-      puts "#{x.id} #{x.first_name} #{x.last_name} #{x.email} #{x.note}"
+      puts "ID:#{x.id} First name:#{x.first_name} Last name:#{x.last_name} Email:#{x.email} Note:#{x.note}"
       puts "-" * 20
     end
   end
