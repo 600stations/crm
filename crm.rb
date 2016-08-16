@@ -31,7 +31,7 @@ class Crm
     when 3 then delete_contact
     when 4 then display_all_contacts
     when 5 then search_by_attribute
-    when 6 then ####need exit
+    when 6 then exit
     # To be clear, the methods add_new_contact and modify_existing_contact
     # haven't been implemented yet
     end
@@ -68,11 +68,12 @@ end
   end
 
   def delete_contact
-    display_contacts
+    display_all_contacts
     puts "Please enter the id of the contact you wish to modify"
     user_input = gets.chomp
     if user_input == @id
-      #then ######
+      delete
+      puts "Deleted"#goes to delete method
     else "please re-enter ID"
     end
     #calls delete method in contact.rb and updates @@contacts
@@ -87,7 +88,7 @@ end
 
   def display_all_contacts
     Contact.all.each do|x|
-      puts "#{@id} #{@first_name} #{@last_name} #{@email} #{@note}" # do we need x.@id
+      puts "#{x.id} #{x.first_name} #{x.last_name} #{x.email} #{x.note}" # do we need x.@id
       puts "-" * 20
     end    # HINT: Make use of the display_contacts method to keep your code DRY
   end
@@ -95,6 +96,10 @@ end
   def search_by_attribute
 
     # HINT: Make use of the display_contacts method to keep your code DRY
+  end
+
+  def exit
+    abort("Leaving the Rolodex. Good bye")
   end
 
   # Add other methods here, if you need them.

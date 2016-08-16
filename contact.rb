@@ -13,9 +13,6 @@ class Contact
        @last_name = last_name
        @email = email
        @note = note
-      #self.create #to add new instance to @@contacts array
-      # @@contacts  << self #this will put whatever contact I make into @@contacts
-            # simple way to see list
        @id = @@id# check this
        @@id += 1 # this way the next contact will get a different id
      end
@@ -74,7 +71,7 @@ end
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-#Contacts.delete(id)#this deletes contact from rolodex
+    @@contacts.delete(id)#this deletes contact from rolodex
   end
 
   # Feel free to add other methods here, if you need them.
