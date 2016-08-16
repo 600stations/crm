@@ -71,8 +71,8 @@ end
     display_all_contacts
     puts "Please enter the id of the contact you wish to modify"
     id = gets.chomp.to_i
-    contact_info = Contact.find(id)
-    contact_info.delete()
+    contact_detail = Contact.find(id)
+    contact_detail.delete()
   end
 
   # This method should accept as an argument an array of contacts

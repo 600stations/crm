@@ -40,9 +40,9 @@ end
   # This method should accept an id as an argument
   # and return the contact who has that id
   def self.find(id)
-    @@contacts.each do|contact|
-      if contact.id == id
-        return contact
+    @@contacts.each do|x|
+      if x.id == id
+        return x 
       end
     end
   end
