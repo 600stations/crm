@@ -8,9 +8,9 @@ class Crm
 
   def main_menu
     while true # repeat indefinitely
-      print_main_menu
-      user_selected = gets.to_i
-      call_option(user_selected)
+      print_main_menu # goes to print_main_menu method
+      user_selected = gets.to_i # stores user input
+      call_option(user_selected) # directs to call_option method with argument
     end
   end
 
@@ -31,9 +31,7 @@ class Crm
     when 3 then delete_contact
     when 4 then display_all_contacts
     when 5 then search_by_attribute
-    when 6 then exit
-    # To be clear, the methods add_new_contact and modify_existing_contact
-    # haven't been implemented yet
+    when 6 then exit # go to exit method for abort
     end
   end
 
@@ -56,15 +54,11 @@ end
 #  end
 
   def modify_existing_contact
-    display_all_contacts #do we want display_all_contacts INSTEAD??
+    display_all_contacts
     puts "Please enter the id of the contact you wish to modify"
     id_to_modify = gets.chomp
     item_to_modify = Contact.find(id_to_modify)
-    #get the instance
-    item_to_modify.update#we have to pass some variables?)
-      #then ###### go to update method in contacts Contact.find
-    #else "please re-enter ID"
-    #end
+    item_to_modify.update
   end
 
   def delete_contact()
@@ -77,19 +71,17 @@ end
 
 
   def display_contacts(array_of_contacts)
-    # This method should accept as an argument an array of contacts
-    # and display each contact in that array
-    # HINT: Make use of this method in the display_all_contacts and search_by_attribute methods to keep your code DRY
-    array_of_contacts.each do |x|
+    # method accepts an array of contacts as an argument then displays each contact
+    array_of_contacts.each do |x| # rename
     puts x # This displays the selected contact
     end
   end
 
   def display_all_contacts
     Contact.all.each do|x|
-      puts "#{x.id} #{x.first_name} #{x.last_name} #{x.email} #{x.note}" # do we need x.@id
+      puts "#{x.id} #{x.first_name} #{x.last_name} #{x.email} #{x.note}"
       puts "-" * 20
-    end    # HINT: Make use of the display_contacts method to keep your code DRY
+    end
   end
 
   def search_by_attribute()
@@ -99,14 +91,13 @@ end
     value = gets.chomp
     contact_detail = Contact.find_by(attribute, value)
     return display_contacts([contact_detail.first_name, contact_detail.last_name, contact_detail.email, contact_detail.note])
-    # HINT: Make use of the display_contacts method to keep your code DRY
+
   end
 
   def exit
     abort("Leaving the Rolodex. Good bye")
   end
 
-  # Add other methods here, if you need them.
 
 end
 crm = Crm.new
