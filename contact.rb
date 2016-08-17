@@ -22,12 +22,12 @@ class Contact
 def self.create(first_name, last_name, email, note)
   new_contact = Contact.new(first_name, last_name, email, note)
   @@contacts << new_contact
-  return new_contact
+  return new_contact # do we need this value?
 end
 
   # Class method  returns all of the existing contacts(all instances)
   def self.all
-  @@contacts #returns all my contact list
+     @@contacts #returns all my contact list
   end
 
   def full_name # this returns full name
@@ -52,7 +52,7 @@ end
         @first_name = modify
         puts "The first name was changed to: #{@first_name}"
         elsif attribute == "last name"
-        @last_name == modify
+        @last_name = modify
         puts "The last name was changed to: #{@last_name}"
         elsif attribute == "email"
         @email = modify
@@ -73,23 +73,27 @@ end
       @@contacts.each do |x|
           if value == x.first_name
           return x #this is the contact
+          #else puts "This first name doesn't match our records"
           end
+
         end
     elsif attribute == "last name"
       @@contacts.each do |x|
           if value == x.last_name
           return x
           end
+        #else puts "This last name doesn't match our records"
         end
     elsif attribute == "email"
       @@contacts.each do |x|
           if value == x.email
           return x
           end
+      #  else puts "This email doesn't match our records"
         end
     else
-      "No match was found. Please try again"
-      self.find_by()
+      puts "Incorrect selection"#this needs to be changed
+      #self.find_by()
     end
 
   end

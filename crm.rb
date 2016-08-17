@@ -9,7 +9,7 @@ class Crm
   def main_menu
     while true # repeat indefinitely
       print_main_menu # goes to print_main_menu method
-      user_selected = gets.to_i # stores user input
+      user_selected = gets.chomp.to_i # stores user input
       call_option(user_selected) # directs to call_option method with argument
     end
   end
