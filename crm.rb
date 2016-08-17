@@ -54,7 +54,7 @@ end
 #  end
 
   def modify_existing_contact()
-    #display_all_contacts
+    display_all_contacts
     puts "Please enter the a single attribute: first name, last name or email"
     attribute = gets.chomp
     puts "Please enter the contact's: first name or last name or email"

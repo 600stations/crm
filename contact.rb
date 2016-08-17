@@ -103,9 +103,9 @@ end
 @@contacts.clear #empties @@contacts array "the rolodex"
   end
 
-  def full_name
-   "#{first_name} #{last_name}"
-  end
+  # def full_name 
+  #  "#{first_name} #{last_name}"
+  # end
 
   # This method should delete the contact
   def delete()
