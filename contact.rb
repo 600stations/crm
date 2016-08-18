@@ -59,6 +59,7 @@ end
         puts "The new email is: #{@email}"
         elsif attribute == "note"
         @note = modify
+        puts "The new note is: #{@note}"
         else
         "No match was found. Please try again"
         end
@@ -69,7 +70,7 @@ end
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(attribute, value)
-    if attribute == "first name"
+    if attribute == "1"
       @@contacts.each do |x|
           if value == x.first_name
           return x #this is the contact
@@ -77,21 +78,26 @@ end
           end
 
         end
-    elsif attribute == "last name"
+    elsif attribute == "2"
       @@contacts.each do |x|
           if value == x.last_name
           return x
           end
         #else puts "This last name doesn't match our records"
         end
-    elsif attribute == "email"
+    elsif attribute == "3"
       @@contacts.each do |x|
           if value == x.email
           return x
           end
-      #  else puts "This email doesn't match our records"
         end
-    else
+        elsif attribute == "4"
+        @@contacts.each do |x|
+          if value == x.note
+          return x
+          end
+     end
+   else
       puts "Incorrect selection"#this needs to be changed
       #self.find_by()
     end
@@ -103,11 +109,11 @@ end
 @@contacts.clear #empties @@contacts array "the rolodex"
   end
 
-  # def full_name 
+  # def full_name
   #  "#{first_name} #{last_name}"
   # end
 
-  # This method should delete the contact
+
   def delete()
     return @@contacts.delete(self)#this deletes contact from rolodex
   end

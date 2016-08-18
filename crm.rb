@@ -55,27 +55,35 @@ end
 
   def modify_existing_contact()
     display_all_contacts
-    puts "Please enter the a single attribute: first name, last name or email"
+    puts "Please enter:"
+    puts "| 1 | for first name"
+    puts "| 2 | for last name"
+    puts "| 3 | for email"
+    puts "| 4 | for notes"
     attribute = gets.chomp
     puts "Please enter the contact's: first name or last name or email"
     value = gets.chomp
     contact_detail = Contact.find_by(attribute, value)
 
-    if attribute == "first name"
+    if attribute == "1"
         puts "What is the new first name?"
         new_first_name = gets.chomp
         return contact_detail.update("first name", new_first_name)
 
-        elsif attribute == "last name"
+      elsif attribute == "2"
         puts "what is new last name?"
         new_last_name = gets.chomp
         return contact_detail.update("last name", new_last_name)
 
-        elsif attribute == "email"
+      elsif attribute == "3"
         puts "what is the new email?"
         new_email = gets.chomp
         return contact_detail.update("email", new_email)
 
+      elsif attribute == "4"
+        puts "what is the new note?"
+        new_note = gets.chomp
+        return contact_detail.update("note", new_note)
       end
     end
 
@@ -118,5 +126,8 @@ end
 
 
 end
+Contact.create('Mark', 'Zuckerberg', 'mark@facebook.com', 'CEO')
+Contact.create('Sergey', 'Brin', 'sergey@google.com', 'Co-Founder')
+Contact.create('Steve', 'Jobs', 'steve@apple.com', 'Visionary')
 crm = Crm.new
 crm.main_menu
