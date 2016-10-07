@@ -8,7 +8,7 @@ class Crm
 
   def main_menu
     while true # repeat indefinitely
-      print_main_menu # goes to print_main_menu method
+      print_main_menu # to print_main_menu method
       user_selected = gets.chomp.to_i # stores user input
       call_option(user_selected) # directs to call_option method with argument
     end
@@ -51,36 +51,39 @@ class Crm
   Contact.create(first_name, last_name, email, note)
 end
 
-#  end
 
   def modify_existing_contact()
     display_all_contacts
     puts "Please enter:"
-    puts "| 1 | for first name"
-    puts "| 2 | for last name"
-    puts "| 3 | for email"
-    puts "| 4 | for notes"
+    #puts "| 1 | for first name"
+    #puts "| 2 | for last name"
+    #puts "| 3 | for email"
+    #puts "| 4 | for notes"
+    puts "| first name | for first name"
+    puts "| last name | for last name"
+    puts "| email | for email"
+    puts "| note | for note"
     attribute = gets.chomp
-    puts "Please enter the contact's: first name or last name or email"
+    puts "Please enter the contact's: #{attribute}"
     value = gets.chomp
     contact_detail = Contact.find_by(attribute, value)
 
-    if attribute == "1"
+    if attribute == "first name"
         puts "What is the new first name?"
         new_first_name = gets.chomp
         return contact_detail.update("first name", new_first_name)
 
-      elsif attribute == "2"
+      elsif attribute == "last name"
         puts "what is new last name?"
         new_last_name = gets.chomp
         return contact_detail.update("last name", new_last_name)
 
-      elsif attribute == "3"
+      elsif attribute == "email"
         puts "what is the new email?"
         new_email = gets.chomp
         return contact_detail.update("email", new_email)
 
-      elsif attribute == "4"
+      elsif attribute == "note"
         puts "what is the new note?"
         new_note = gets.chomp
         return contact_detail.update("note", new_note)
@@ -99,7 +102,7 @@ end
   def display_contacts(array_of_contacts)
     # method accepts an array of contacts as an argument then displays each contact
     array_of_contacts.each do |x| # rename
-    print x # This displays the selected contact
+    print x
     end
   end
 
@@ -113,11 +116,11 @@ end
   def search_by_attribute()
     puts "Please enter a single attribute: first name, last name, or email"
     attribute = gets.chomp
-    puts "Pleae enter the contact's first name, last name or email"
+    puts "Pleae enter the contact's #{attribute}"
     value = gets.chomp
     contact_detail = Contact.find_by(attribute, value)
-    return display_contacts([contact_detail.first_name, contact_detail.last_name, contact_detail.email, contact_detail.note])
-
+    #return display_contacts([contact_detail.first_name, contact_detail.last_name, contact_detail.email, contact_detail.note])
+    puts "#{contact_detail.first_name}, #{ contact_detail.last_name},  #{ contact_detail.email}, #{contact_detail.note}"
   end
 
   def exit
@@ -126,6 +129,7 @@ end
 
 
 end
+
 Contact.create('Mark', 'Zuckerberg', 'mark@facebook.com', 'CEO')
 Contact.create('Sergey', 'Brin', 'sergey@google.com', 'Co-Founder')
 Contact.create('Steve', 'Jobs', 'steve@apple.com', 'Visionary')

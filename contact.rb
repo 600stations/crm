@@ -47,21 +47,20 @@ end
   # 1. which of the contact's attributes you want to update
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
-  def update(attribute, modify)
+  def update(attribute, value)
         if attribute == "first name"
-        @first_name = modify
-        puts "The first name was changed to: #{@first_name}"
-        elsif attribute == "last name"
-        @last_name = modify
-        puts "The last name was changed to: #{@last_name}"
+        @first_name = value
+        #puts "The first name was changed to: #{@first_name}"
+      elsif attribute == "last name"
+        @last_name = value
+        #puts "The last name was changed to: #{@last_name}"
         elsif attribute == "email"
-        @email = modify
-        puts "The new email is: #{@email}"
+        @email = value
+        #puts "The new email is: #{@email}"
         elsif attribute == "note"
-        @note = modify
-        puts "The new note is: #{@note}"
-        else
-        "No match was found. Please try again"
+        @note = value
+        #puts "The new note is: #{@note}"
+        # puts "No match was found. Please try again"
         end
   end
 
@@ -70,7 +69,7 @@ end
   # by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(attribute, value)
-    if attribute == "1"
+    if attribute == "first name"
       @@contacts.each do |x|
           if value == x.first_name
           return x #this is the contact
@@ -78,35 +77,32 @@ end
           end
 
         end
-    elsif attribute == "2"
+    elsif attribute == "last name"
       @@contacts.each do |x|
           if value == x.last_name
           return x
           end
         #else puts "This last name doesn't match our records"
         end
-    elsif attribute == "3"
+    elsif attribute == "email"
       @@contacts.each do |x|
           if value == x.email
           return x
           end
         end
-        elsif attribute == "4"
+      else attribute == "note"
         @@contacts.each do |x|
           if value == x.note
           return x
           end
-     end
-   else
-      puts "Incorrect selection"#this needs to be changed
-      #self.find_by()
+        end
     end
 
   end
 
   # This method should delete all of the contacts
   def self.delete_all
-@@contacts.clear #empties @@contacts array "the rolodex"
+   @@contacts.clear #empties @@contacts array "the rolodex"
   end
 
   # def full_name
